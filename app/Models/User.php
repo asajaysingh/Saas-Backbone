@@ -50,8 +50,22 @@ class User extends Authenticatable
     public function organization()
     {
         return $this->belongsToMany(Organization::class)
-        ->withPivot('role')
+        //->withPivot('role')
         ->withTimestamps();
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasPermission($permissionSlug)
+    {
+        return $this->roles()
+        ->whereHas('permissions', function ($query) use ($permissionSlug) {
+            $query->where('slug', $permissionSlug);
+
+        })->exists();
     }
     
 }

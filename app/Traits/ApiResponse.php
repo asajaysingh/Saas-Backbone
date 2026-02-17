@@ -10,14 +10,14 @@ trait ApiResponse
             'success' => true,
             'message' => $message,
             'data' => $data
-        ], $status);
+        ], (int) $status);
     }
 
-    protected function error($message = 'Error', $status = 400)
+    protected function error($message = 'Error', $error = null, $status = 400)
     {
         return response()->json([
             'success' => false,
             'message' => $message
-        ], $status);
+        ], (int) $status);
     }
 }
