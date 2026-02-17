@@ -9,6 +9,6 @@ updated Role and Permissions for organization
 
 
 <p align="center">
-//API Documentations
+API Documentations
 Import the postman collection from: root postman dir
 </p>
